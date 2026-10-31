@@ -291,11 +291,15 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:1
         <p style="margin-top:14px"><strong>contact@tartineacroquer.fr</strong></p>
       </div>
       <div>
-        <form id="contact-form">
+        <form id="contact-form" action="https://formsubmit.co/contact@tartineacroquer.fr" method="POST">
           <input name="nom" placeholder="Votre nom" required>
           <input name="email" type="email" placeholder="Votre email" required>
           <textarea name="msg" placeholder="Votre message" required></textarea>
           <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+          <input type="hidden" name="_subject" value="Nouveau message (site Tartine à Croquer)">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://tartineacroquer.fr/merci.html">
           <button class="btn" type="submit" style="border:0;cursor:pointer">Envoyer</button>
           <p class="form-error" id="form-error" role="alert" hidden>Oups, l'envoi a échoué. Réessayez ou écrivez-nous à contact@tartineacroquer.fr.</p>
         </form>
@@ -315,9 +319,13 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:1
           fetch('https://formsubmit.co/ajax/contact@tartineacroquer.fr',{
             method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
             body:JSON.stringify({Nom:f.nom.value,Email:f.email.value,Message:f.msg.value,_replyto:f.email.value,_subject:'Nouveau message de '+f.nom.value+' (site Tartine à Croquer)',_template:'table'})
-          }).then(function(r){return r.json().then(function(d){if(!r.ok||String(d.success)!=='true')throw d;});})
+          }).then(function(r){return r.json().then(function(d){if(!r.ok||String(d.success)!=='true')throw {api:true};});},
+                  function(){throw {network:true};})
           .then(function(){f.hidden=true;ok.hidden=false;})
-          .catch(function(){err.hidden=false;b.disabled=false;b.textContent='Envoyer';});
+          .catch(function(e){
+            if(e&&e.network){HTMLFormElement.prototype.submit.call(f);return;} /* appel bloqué : envoi classique */
+            err.hidden=false;b.disabled=false;b.textContent='Envoyer';
+          });
         });
       })();
       </script>
