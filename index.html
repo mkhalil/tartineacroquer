@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tartine à Croquer — Pâtes à tartiner à la noisette</title>
+<meta name="description" content="Tartine à Croquer : pâtes à tartiner artisanales à la noisette, sans huile de palme, fabriquées en petites séries.">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#FBF4EA; --paper:#FFFDF9; --hazel:#9A5B2E; --hazel-dark:#5B3219; --choco:#3B2214;
+  --gold:#D9A441; --ink:#2A1A10; --muted:#7A6555; --line:#EADBC8;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,sans-serif;color:var(--ink);background:var(--cream);line-height:1.6}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;color:var(--choco);line-height:1.15}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+/* header */
+header{position:sticky;top:0;z-index:10;background:rgba(251,244,234,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand img{width:44px;height:44px}
+.brand span{font-family:Fraunces,serif;font-weight:700;font-size:1.25rem;color:var(--choco)}
+.nav ul{display:flex;gap:28px;list-style:none}
+.nav ul a{text-decoration:none;font-weight:500;color:var(--hazel-dark)}
+.nav ul a:hover{color:var(--hazel)}
+.btn{display:inline-block;background:var(--hazel);color:#fff;text-decoration:none;font-weight:600;padding:14px 26px;border-radius:999px;transition:.2s}
+.btn:hover{background:var(--hazel-dark);transform:translateY(-1px)}
+.btn.ghost{background:transparent;color:var(--hazel-dark);border:2px solid var(--hazel)}
+.btn.ghost:hover{background:var(--hazel);color:#fff}
+/* hero */
+.hero{padding:72px 0 56px}
+.hero .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center}
+.eyebrow{display:inline-block;background:#F3E3CC;color:var(--hazel-dark);font-weight:600;font-size:.85rem;padding:6px 14px;border-radius:999px;margin-bottom:18px}
+.hero h1{font-size:clamp(2.4rem,5vw,4rem);margin-bottom:18px}
+.hero h1 em{font-style:normal;color:var(--hazel)}
+.hero p{font-size:1.15rem;color:var(--muted);max-width:520px;margin-bottom:30px}
+.cta{display:flex;gap:14px;flex-wrap:wrap}
+.hero-art{background:radial-gradient(circle at 50% 45%,#F6E2C4 0,#F1D3A8 55%,transparent 56%);aspect-ratio:1;display:grid;place-items:center}
+.hero-art svg{width:92%;height:auto}
+.badges{display:flex;gap:26px;margin-top:36px;flex-wrap:wrap}
+.badges div{font-size:.9rem;color:var(--muted)}
+.badges strong{display:block;font-family:Fraunces,serif;font-size:1.4rem;color:var(--choco)}
+/* sections */
+section{padding:80px 0}
+.head{text-align:center;max-width:640px;margin:0 auto 48px}
+.head h2{font-size:clamp(1.9rem,3.5vw,2.6rem);margin-bottom:12px}
+.head p{color:var(--muted)}
+.products{background:var(--paper)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.card{background:var(--cream);border:1px solid var(--line);border-radius:24px;overflow:hidden;transition:.25s}
+.card:hover{transform:translateY(-4px);box-shadow:0 18px 40px -20px rgba(91,50,25,.35)}
+.card .img{aspect-ratio:4/3;display:grid;place-items:center}
+.card .img svg{width:70%;height:auto}
+.card .body{padding:22px 24px 26px}
+.card h3{font-size:1.35rem;margin-bottom:6px}
+.card p{color:var(--muted);font-size:.95rem;margin-bottom:16px}
+.price{display:flex;justify-content:space-between;align-items:center}
+.price strong{font-family:Fraunces,serif;font-size:1.4rem;color:var(--hazel-dark)}
+.tag{font-size:.8rem;background:#fff;border:1px solid var(--line);padding:4px 10px;border-radius:999px;color:var(--muted)}
+/* story */
+.story .wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.story-art{border-radius:28px;background:#EBCFA6;aspect-ratio:5/4;display:grid;place-items:center;overflow:hidden}
+.story-art svg{width:100%;height:100%}
+.story h2{font-size:clamp(1.9rem,3.5vw,2.6rem);margin-bottom:18px}
+.story p{color:var(--muted);margin-bottom:14px}
+/* features */
+.features{background:var(--choco);color:#F3E3CC}
+.features h2{color:#fff}
+.features .head p{color:#D8C2A6}
+.feat{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.feat > div{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:26px}
+.feat .ic{font-size:1.8rem;margin-bottom:10px}
+.feat h3{color:#fff;font-size:1.15rem;margin-bottom:6px}
+.feat p{font-size:.92rem;color:#D8C2A6}
+/* recipe */
+.recipes .grid .card .img{background:#F3E3CC}
+/* contact */
+.contact .box{background:var(--paper);border:1px solid var(--line);border-radius:28px;padding:48px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.contact h2{font-size:2.2rem;margin-bottom:12px}
+.contact p{color:var(--muted)}
+form{display:grid;gap:12px}
+input,textarea{font:inherit;padding:14px 16px;border:1px solid var(--line);border-radius:14px;background:var(--cream);color:var(--ink)}
+textarea{min-height:110px;resize:vertical}
+footer{padding:36px 0;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+@media (max-width:860px){
+  .nav ul{display:none}
+  .hero .wrap,.story .wrap,.contact .box{grid-template-columns:1fr}
+  .grid{grid-template-columns:1fr}
+  .feat{grid-template-columns:1fr 1fr}
+  .contact .box{padding:28px}
+  section{padding:60px 0}
+}
+@media (max-width:520px){.feat{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!-- Symboles SVG réutilisables -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <linearGradient id="nutG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#C47A3F"/><stop offset="1" stop-color="#7A4220"/></linearGradient>
+    <linearGradient id="capG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E8C77A"/><stop offset="1" stop-color="#B98A2E"/></linearGradient>
+    <linearGradient id="spreadG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8A4E26"/><stop offset="1" stop-color="#4A2614"/></linearGradient>
+    <linearGradient id="breadG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3D9A6"/><stop offset="1" stop-color="#E3B874"/></linearGradient>
+    <symbol id="hazelnut" viewBox="0 0 100 110">
+      <path d="M50 22c26 0 42 22 40 48-2 24-20 38-40 38S12 94 10 70C8 44 24 22 50 22z" fill="url(#nutG)"/>
+      <path d="M22 44c8-16 46-18 56 0" fill="none" stroke="#5B3219" stroke-width="3" stroke-linecap="round" opacity=".5"/>
+      <path d="M14 34C20 10 80 10 86 34 70 26 30 26 14 34z" fill="#6B3A1C"/>
+      <path d="M50 2v16" stroke="#5B3219" stroke-width="5" stroke-linecap="round"/>
+      <ellipse cx="34" cy="62" rx="7" ry="13" fill="#fff" opacity=".18"/>
+    </symbol>
+    <symbol id="jar" viewBox="0 0 200 240">
+      <rect x="40" y="10" width="120" height="44" rx="10" fill="url(#capG)"/>
+      <rect x="40" y="38" width="120" height="8" fill="#9C7424" opacity=".4"/>
+      <path d="M30 60h140c8 0 14 6 14 14v136c0 14-12 26-26 26H42c-14 0-26-12-26-26V74c0-8 6-14 14-14z" fill="url(#spreadG)"/>
+      <path d="M30 60h140c8 0 14 6 14 14v12H16V74c0-8 6-14 14-14z" fill="#fff" opacity=".12"/>
+      <rect x="40" y="110" width="120" height="84" rx="12" fill="#FBF4EA"/>
+      <rect x="28" y="90" width="10" height="120" rx="5" fill="#fff" opacity=".18"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#"><img src="logo.svg" alt="Logo Tartine à Croquer"><span>Tartine à Croquer</span></a>
+    <ul>
+      <li><a href="#produits">Nos pots</a></li>
+      <li><a href="#histoire">Notre histoire</a></li>
+      <li><a href="#idees">Idées gourmandes</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="btn" href="#contact">Commander</a>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">🌰 Noisettes torréfiées · sans huile de palme</span>
+      <h1>La pâte à tartiner qui donne envie de <em>croquer</em>.</h1>
+      <p>Des noisettes généreusement torréfiées, un cacao choisi avec soin et rien de superflu. Fabriquée en petites séries pour des tartines qui ont du caractère.</p>
+      <div class="cta">
+        <a class="btn" href="#produits">Découvrir nos pots</a>
+        <a class="btn ghost" href="#histoire">Notre histoire</a>
+      </div>
+      <div class="badges">
+        <div><strong>45 %</strong>de noisettes</div>
+        <div><strong>0</strong>huile de palme</div>
+        <div><strong>100 %</strong>fait avec amour</div>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 500 500">
+        <!-- tartine -->
+        <g transform="rotate(-12 250 330)">
+          <path d="M95 250c0-60 50-90 95-75 20-25 85-30 110 0 50-15 105 15 105 75v120c0 18-14 30-30 30H125c-16 0-30-12-30-30z" fill="#C98E4A"/>
+          <path d="M110 255c0-48 42-72 80-60 18-22 78-26 100 0 42-12 92 12 92 60v110c0 12-10 20-20 20H130c-12 0-20-8-20-20z" fill="url(#breadG)"/>
+          <path d="M130 250c20-30 60-20 80-30s60-20 85 0 60 10 80 30c10 40-10 70 0 100-60 15-180 10-245 0 10-30-10-60 0-100z" fill="url(#spreadG)"/>
+          <path d="M160 260c30-12 70 4 110-8" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity=".18" fill="none"/>
+          <!-- bite -->
+          <circle cx="398" cy="215" r="34" fill="#F1D3A8"/>
+          <circle cx="410" cy="262" r="26" fill="#F1D3A8"/>
+        </g>
+        <use href="#jar" x="290" y="40" width="170" height="204"/>
+        <text x="375" y="168" text-anchor="middle" font-family="Fraunces,serif" font-weight="700" font-size="17" fill="#5B3219">Tartine</text>
+        <text x="375" y="188" text-anchor="middle" font-family="Fraunces,serif" font-weight="700" font-size="13" fill="#9A5B2E">à Croquer</text>
+        <use href="#hazelnut" x="60" y="70" width="70" height="77"/>
+        <use href="#hazelnut" x="120" y="110" width="50" height="55" transform="rotate(18 145 137)"/>
+        <use href="#hazelnut" x="380" y="390" width="60" height="66" transform="rotate(-20 410 423)"/>
+        <use href="#hazelnut" x="40" y="400" width="48" height="53"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="products" id="produits">
+  <div class="wrap">
+    <div class="head">
+      <h2>Nos pots gourmands</h2>
+      <p>Trois recettes, une même obsession : le goût franc de la noisette.</p>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <div class="img" style="background:#F3E3CC"><svg viewBox="0 0 200 240"><use href="#jar"/><text x="100" y="148" text-anchor="middle" font-family="Fraunces,serif" font-weight="700" font-size="20" fill="#5B3219">Classique</text><text x="100" y="172" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" fill="#9A5B2E">noisette · cacao</text></svg></div>
+        <div class="body">
+          <h3>La Classique</h3>
+          <p>Noisettes torréfiées et cacao doux. L'incontournable du petit-déjeuner.</p>
+          <div class="price"><strong>7,90 €</strong><span class="tag">Pot 250 g</span></div>
+        </div>
+      </article>
+      <article class="card">
+        <div class="img" style="background:#EAD7BC"><svg viewBox="0 0 200 240"><use href="#jar"/><text x="100" y="148" text-anchor="middle" font-family="Fraunces,serif" font-weight="700" font-size="20" fill="#5B3219">Croquante</text><text x="100" y="172" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" fill="#9A5B2E">éclats de noisettes</text></svg></div>
+        <div class="body">
+          <h3>La Croquante</h3>
+          <p>Avec de vrais éclats de noisettes pour croquer à chaque bouchée.</p>
+          <div class="price"><strong>8,50 €</strong><span class="tag">Pot 250 g</span></div>
+        </div>
+      </article>
+      <article class="card">
+        <div class="img" style="background:#F6E7D2"><svg viewBox="0 0 200 240"><use href="#jar"/><text x="100" y="148" text-anchor="middle" font-family="Fraunces,serif" font-weight="700" font-size="20" fill="#5B3219">Pure</text><text x="100" y="172" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" fill="#9A5B2E">100 % noisette</text></svg></div>
+        <div class="body">
+          <h3>La Pure Noisette</h3>
+          <p>Sans cacao, juste la noisette dans toute sa rondeur. Pour les puristes.</p>
+          <div class="price"><strong>8,90 €</strong><span class="tag">Pot 250 g</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="story" id="histoire">
+  <div class="wrap">
+    <div class="story-art" aria-hidden="true">
+      <svg viewBox="0 0 500 400" preserveAspectRatio="xMidYMid slice">
+        <rect width="500" height="400" fill="#EBCFA6"/>
+        <circle cx="250" cy="420" r="260" fill="#E0BE8C"/>
+        <use href="#hazelnut" x="60" y="60" width="90" height="99"/>
+        <use href="#hazelnut" x="160" y="120" width="120" height="132" transform="rotate(-15 220 186)"/>
+        <use href="#hazelnut" x="300" y="70" width="100" height="110" transform="rotate(12 350 125)"/>
+        <use href="#hazelnut" x="350" y="220" width="80" height="88"/>
+        <use href="#hazelnut" x="70" y="230" width="70" height="77" transform="rotate(25 105 268)"/>
+        <use href="#hazelnut" x="260" y="270" width="64" height="70"/>
+      </svg>
+    </div>
+    <div>
+      <h2>Née d'une envie toute simple</h2>
+      <p>Tartine à Croquer est née autour d'une table de petit-déjeuner, d'une envie : retrouver le vrai goût de la noisette, sans compromis.</p>
+      <p>Nous sélectionnons des noisettes que nous torréfions lentement, puis nous les broyons longuement pour obtenir une texture onctueuse. Pas d'huile de palme, pas d'arômes artificiels, juste de bons ingrédients.</p>
+      <p>Chaque pot est rempli en petites séries, pour que la fraîcheur soit toujours au rendez-vous.</p>
+    </div>
+  </div>
+</section>
+
+<section class="features">
+  <div class="wrap">
+    <div class="head">
+      <h2>Ce qui fait la différence</h2>
+      <p>Des choix simples, assumés, et qui se goûtent.</p>
+    </div>
+    <div class="feat">
+      <div><div class="ic">🌰</div><h3>Riche en noisettes</h3><p>Jusqu'à 45 % de noisettes torréfiées dans nos recettes.</p></div>
+      <div><div class="ic">🌿</div><h3>Sans huile de palme</h3><p>Une recette courte, sans additifs inutiles.</p></div>
+      <div><div class="ic">🔥</div><h3>Torréfaction lente</h3><p>Pour révéler des notes grillées et gourmandes.</p></div>
+      <div><div class="ic">🫙</div><h3>Petites séries</h3><p>Des pots remplis régulièrement pour plus de fraîcheur.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="recipes" id="idees">
+  <div class="wrap">
+    <div class="head">
+      <h2>Idées gourmandes</h2>
+      <p>Sur une tartine, bien sûr… mais pas seulement.</p>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <div class="img"><svg viewBox="0 0 300 220"><ellipse cx="150" cy="180" rx="120" ry="18" fill="#E0BE8C"/><path d="M50 120c0-40 30-60 60-50 14-18 56-20 74 0 34-10 66 10 66 50v40c0 10-8 18-18 18H68c-10 0-18-8-18-18z" fill="#C98E4A"/><path d="M62 122c0-30 26-46 52-38 12-14 50-16 64 0 28-8 56 8 56 38v32c0 6-6 12-12 12H74c-6 0-12-6-12-12z" fill="url(#breadG)"/><path d="M76 118c30-20 120-24 146 0-4 16 2 28 0 36-50 8-100 8-146 0 2-12-4-22 0-36z" fill="url(#spreadG)"/><use href="#hazelnut" x="110" y="96" width="22" height="24"/><use href="#hazelnut" x="160" y="102" width="20" height="22"/><use href="#hazelnut" x="190" y="94" width="18" height="20"/></svg></div>
+        <div class="body"><h3>La tartine du matin</h3><p>Pain de campagne grillé, une belle couche de Croquante et quelques noisettes concassées.</p></div>
+      </article>
+      <article class="card">
+        <div class="img"><svg viewBox="0 0 300 220"><ellipse cx="150" cy="180" rx="120" ry="18" fill="#E0BE8C"/><ellipse cx="150" cy="150" rx="100" ry="26" fill="#E9C27F"/><ellipse cx="150" cy="140" rx="100" ry="26" fill="#F3D9A6"/><ellipse cx="150" cy="128" rx="96" ry="24" fill="#E9C27F"/><ellipse cx="150" cy="118" rx="96" ry="24" fill="#F3D9A6"/><path d="M80 112c20-14 120-14 140 0-10 10-30 14-70 14s-60-4-70-14z" fill="url(#spreadG)"/><path d="M140 112c4 10-2 20 6 30M170 114c2 8-4 14 2 22" stroke="#5B3219" stroke-width="7" stroke-linecap="round" fill="none"/></svg></div>
+        <div class="body"><h3>Les crêpes du dimanche</h3><p>Une cuillère de Classique tiédie au bain-marie, et le goûter est réglé.</p></div>
+      </article>
+      <article class="card">
+        <div class="img"><svg viewBox="0 0 300 220"><ellipse cx="150" cy="185" rx="110" ry="16" fill="#E0BE8C"/><path d="M90 80h120l-14 100c-2 8-8 12-16 12h-60c-8 0-14-4-16-12z" fill="#fff" opacity=".85"/><path d="M96 120h108l-8 58c-2 6-6 10-12 10h-68c-6 0-10-4-12-10z" fill="#F6E7D2"/><path d="M98 100h104l-3 22H101z" fill="url(#spreadG)"/><path d="M96 80c10-20 98-20 108 0z" fill="#FBF4EA"/><use href="#hazelnut" x="132" y="48" width="34" height="37"/></svg></div>
+        <div class="body"><h3>Le yaourt gourmand</h3><p>Yaourt nature, un filet de Pure Noisette et des éclats torréfiés pour le croquant.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="box">
+      <div>
+        <h2>Envie d'un pot ?</h2>
+        <p>Commandes, revendeurs, questions ou simple envie de dire bonjour : écrivez-nous, on vous répond rapidement.</p>
+        <p style="margin-top:14px"><strong>contact@tartineacroquer.fr</strong></p>
+      </div>
+      <form onsubmit="event.preventDefault();var f=this;location.href='mailto:contact@tartineacroquer.fr?subject='+encodeURIComponent('Message de '+f.nom.value)+'&body='+encodeURIComponent(f.msg.value+'\n\n'+f.email.value);">
+        <input name="nom" placeholder="Votre nom" required>
+        <input name="email" type="email" placeholder="Votre email" required>
+        <textarea name="msg" placeholder="Votre message" required></textarea>
+        <button class="btn" type="submit" style="border:0;cursor:pointer">Envoyer</button>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="brand" href="#"><img src="logo.svg" alt="" width="32" height="32"><span style="font-size:1rem">Tartine à Croquer</span></a>
+    <span>© 2026 Tartine à Croquer · Pâtes à tartiner à la noisette</span>
+  </div>
+</footer>
+</body>
+</html>
