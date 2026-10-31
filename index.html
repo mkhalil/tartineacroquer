@@ -87,6 +87,11 @@ section{padding:80px 0}
 form{display:grid;gap:12px}
 input,textarea{font:inherit;padding:14px 16px;border:1px solid var(--line);border-radius:14px;background:var(--cream);color:var(--ink)}
 textarea{min-height:110px;resize:vertical}
+.form-success{text-align:center;padding:28px;background:#EEF6E8;border:1px solid #CFE3C0;border-radius:20px}
+.form-success .ok{width:52px;height:52px;margin:0 auto 12px;border-radius:50%;background:#5E8C3A;color:#fff;display:grid;place-items:center;font-size:1.6rem;font-weight:700}
+.form-success h3{font-size:1.3rem;margin-bottom:6px}
+.form-error{color:#A33;font-size:.9rem}
+[hidden]{display:none!important}
 footer{padding:36px 0;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
 footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
 @media (max-width:860px){
@@ -285,12 +290,37 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:1
         <p>Commandes, revendeurs, questions ou simple envie de dire bonjour : écrivez-nous, on vous répond rapidement.</p>
         <p style="margin-top:14px"><strong>contact@tartineacroquer.fr</strong></p>
       </div>
-      <form onsubmit="event.preventDefault();var f=this;location.href='mailto:contact@tartineacroquer.fr?subject='+encodeURIComponent('Message de '+f.nom.value)+'&body='+encodeURIComponent(f.msg.value+'\n\n'+f.email.value);">
-        <input name="nom" placeholder="Votre nom" required>
-        <input name="email" type="email" placeholder="Votre email" required>
-        <textarea name="msg" placeholder="Votre message" required></textarea>
-        <button class="btn" type="submit" style="border:0;cursor:pointer">Envoyer</button>
-      </form>
+      <div>
+        <form id="contact-form">
+          <input name="nom" placeholder="Votre nom" required>
+          <input name="email" type="email" placeholder="Votre email" required>
+          <textarea name="msg" placeholder="Votre message" required></textarea>
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+          <button class="btn" type="submit" style="border:0;cursor:pointer">Envoyer</button>
+          <p class="form-error" id="form-error" role="alert" hidden>Oups, l'envoi a échoué. Réessayez ou écrivez-nous à contact@tartineacroquer.fr.</p>
+        </form>
+        <div class="form-success" id="form-success" role="status" hidden>
+          <div class="ok">✓</div>
+          <h3>Merci, votre message est bien envoyé !</h3>
+          <p>Nous avons bien reçu votre demande et nous allons vous contacter très vite.</p>
+        </div>
+      </div>
+      <script>
+      (function(){
+        var f=document.getElementById('contact-form'),ok=document.getElementById('form-success'),err=document.getElementById('form-error');
+        f.addEventListener('submit',function(e){
+          e.preventDefault();
+          if(f._honey.value) return;
+          var b=f.querySelector('button');b.disabled=true;b.textContent='Envoi en cours…';err.hidden=true;
+          fetch('https://formsubmit.co/ajax/contact@tartineacroquer.fr',{
+            method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
+            body:JSON.stringify({Nom:f.nom.value,Email:f.email.value,Message:f.msg.value,_replyto:f.email.value,_subject:'Nouveau message de '+f.nom.value+' (site Tartine à Croquer)',_template:'table'})
+          }).then(function(r){return r.json().then(function(d){if(!r.ok||String(d.success)!=='true')throw d;});})
+          .then(function(){f.hidden=true;ok.hidden=false;})
+          .catch(function(){err.hidden=false;b.disabled=false;b.textContent='Envoyer';});
+        });
+      })();
+      </script>
     </div>
   </div>
 </section>
